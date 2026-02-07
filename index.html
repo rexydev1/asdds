@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rexySMS | Premium SMS Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Background Canvas for Matrix Effect -->
+    <canvas id="matrix"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="glitch" data-text="REXY SMS">REXY SMS</span>
+            </div>
+            <div class="header-links">
+                <a href="https://discord.gg/Q3hExxHEGK" target="_blank" class="discord-btn">
+                    <i class="fab fa-discord"></i> Discord Sunucumuz
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <div class="main-card glass">
+                <div class="card-header">
+                    <h2><i class="fas fa-paper-plane"></i> SMS Gönderici</h2>
+                    <p>Hedef numaraya SMS bombardımanı başlatın.</p>
+                </div>
+
+                <div class="input-group">
+                    <div class="field">
+                        <label for="phone">Telefon Numarası</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">+90</span>
+                            <input type="tel" id="phone" placeholder="5XXXXXXXXX" maxlength="10">
+                        </div>
+                        <small>Başına 0 eklemeden 10 hane olarak yazın.</small>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label for="count">Adet</label>
+                            <input type="number" id="count" placeholder="Sonsuz için boş bırakın" min="1">
+                        </div>
+                        <div class="field">
+                            <label for="delay">Aralık (Saniye)</label>
+                            <input type="number" id="delay" value="0" min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button id="startBtn" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> BAŞLAT
+                    </button>
+                    <button id="stopBtn" class="btn btn-danger hidden">
+                        <i class="fas fa-stop"></i> DURDUR
+                    </button>
+                </div>
+            </div>
+
+            <div class="log-card glass">
+                <div class="card-header">
+                    <h3><i class="fas fa-terminal"></i> İşlem Kayıtları</h3>
+                    <div class="stats">
+                        <span id="stat-sent">0 Başarılı</span>
+                        <span id="stat-failed">0 Hatalı</span>
+                    </div>
+                </div>
+                <div id="logs" class="log-container">
+                    <div class="log-entry system">Sistem hazır. Lütfen telefon numarası girin.</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="glass">
+            <div class="footer-content">
+                <span>Made By <a href="https://rexy.dev" target="_blank">rexy</a></span>
+                <span class="version">v2.0 Web Edition</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Music Control UI -->
+    <div class="music-control glass">
+        <div class="music-info">
+            <button id="musicToggle" class="music-btn">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="volume-container">
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+                <span id="volumePercent">50%</span>
+            </div>
+        </div>
+        <div class="music-status">Müzik Çalıyor</div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="assets/music/bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
